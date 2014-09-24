@@ -21,6 +21,9 @@
           <li><a href="./teacher.html">FAQ for  <strong>Teachers</strong></a></li>
           <li><a href="./coaches.html">FAQ for <strong>Coaches</strong></a></li>
         </ul>
+        <h3>
+        <a name="rather-drive-stick" class="anchor quote" href="#" ><span class="octicon octicon-link"></span></a></h3>
+
       </header>
       <section>
         <h1>
@@ -77,6 +80,17 @@
       </footer>
     </div>
     <script src="../javascripts/scale.fix.js"></script>
+<script type="text/javascript">
+ var quotes = ["'I just had a coaching session with Ken Yu and he helped me out a lot. Even though it was late and this is material that is new to me (which made me learn fairly slowly), he was very patient and thorough.'", "'I've had a few coaching sessions with Christine (I'm in phase 2) and she is an amazing coach. She is incredibly knowledgable about everything we have gone over and can explain things in many ways (so she can accomodate kinesthetic and visual learners in addition to auditory)'", "'I had a coaching session with Nathan and it was incredible how much I learned in a single session. I can honestly say that he can teach better than 95% of my college professors.'", "'I had a remote coaching session and it was great! The session was super helpful! He clearly explained the process I should be using for Sinatra routes and user authentication and was really good at thoroughly explaining why things work the way they do'"]
+ var min = 0
+ var max = quotes.length - 1
+ var randomNum = Math.floor(Math.random() * (max-min +1)) + min;
+ console.log(randomNum)
+ var randomQuote = quotes[randomNum]
+ var element = document.createElement('h5')
+ element.innerHTML = randomQuote
+ document.getElementsByClassName('quote')[0].appendChild(element)
+</script>
 
   </body>
 </html>
