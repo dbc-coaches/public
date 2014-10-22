@@ -11,6 +11,8 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js"></script>
   </head>
   <body>
     <div class="wrapper">
@@ -46,54 +48,72 @@
                 </div>
 
                 <script type="text/javascript">
-                 var quotes = ["'I just had a coaching session with Ken Yu and he helped me out a lot. Even though it was late and this is material that is new to me (which made me learn fairly slowly), he was very patient and thorough.'", "'I've had a few coaching sessions with Christine (I'm in phase 2) and she is an amazing coach. She is incredibly knowledgable about everything we have gone over and can explain things in many ways (so she can accomodate kinesthetic and visual learners in addition to auditory)'", "'I had a coaching session with Nathan and it was incredible how much I learned in a single session. I can honestly say that he can teach better than 95% of my college professors.'", "'I had a remote coaching session and it was great! The session was super helpful! He clearly explained the process I should be using for Sinatra routes and user authentication and was really good at thoroughly explaining why things work the way they do'"]
-                 var min = 0
-                 var max = quotes.length - 1
-                 var randomNum = Math.floor(Math.random() * (max-min +1)) + min;
-                 console.log(randomNum)
-                 var randomQuote = quotes[randomNum]
-                 var element = document.createElement('h5')
-                 element.innerHTML = randomQuote
-                 document.getElementsByClassName('quote')[0].appendChild(element)
-               </script>
+
+                  var FireBase = new Firebase("https://dbc-coaches.firebaseio.com/");
+                  var quotesRef = FireBase.child("quotes");
+                  quotesRef.on('value', function (snapshot) {
+                    showQuote(snapshot.val())
+                  }, function (errorObject) {
+                    console.log('The read failed: ' + errorObject.code);
+                  });
+
+                  var showQuote = function(quotes){
+                    var randomQuoteObject = fetch_random(quotes)
+                    var randomQuote = randomQuoteObject['quote']
+                    var element = document.createElement('h5')
+                    element.innerHTML = randomQuote
+                    document.getElementsByClassName('quote')[0].appendChild(element)
+                  }
+
+                  function fetch_random(quotes) {
+                    var temp_key, keys = [];
+                    for(temp_key in quotes) {
+                      if(quotes.hasOwnProperty(temp_key)) {
+                        keys.push(temp_key);
+                      }
+                    }
+                    return quotes[keys[Math.floor(Math.random() * keys.length)]];
+                  }
+
+                </script>
 
 
-               <script type="text/javascript">var wwnhqms00iy8bo;(function(d, t) {
-                var s = d.createElement(t), options = {
-                  'userName':'devbootcamp',
-                  'formHash':'wwnhqms00iy8bo',
-                  'autoResize':true,
-                  'height':'1662',
-                  'async':true,
-                  'host':'wufoo.com',
-                  'header':'show',
-                  'ssl':true};
-                  s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
-                  s.onload = s.onreadystatechange = function() {
-                    var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
-                    try { wwnhqms00iy8bo = new WufooForm();wwnhqms00iy8bo.initialize(options);wwnhqms00iy8bo.display(); } catch (e) {}};
-                    var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
-                  })(document, 'script');</script>
+                <script type="text/javascript">var wwnhqms00iy8bo;(function(d, t) {
+                  var s = d.createElement(t), options = {
+                    'userName':'devbootcamp',
+                    'formHash':'wwnhqms00iy8bo',
+                    'autoResize':true,
+                    'height':'1662',
+                    'async':true,
+                    'host':'wufoo.com',
+                    'header':'show',
+                    'ssl':true};
+                    s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+                    s.onload = s.onreadystatechange = function() {
+                      var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+                      try { wwnhqms00iy8bo = new WufooForm();wwnhqms00iy8bo.initialize(options);wwnhqms00iy8bo.display(); } catch (e) {}};
+                      var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+                    })(document, 'script');</script>
 
-                  <hr>
+                    <hr>
 
-
-                  <h3>
-                    <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Contributors</h3>
-
-                    <p><a href="https://github.com/jonathanpeterwu" class="user-mention">@jonathanpeterwu</a>, <a href="https://github.com/amgando" class="user-mention">@amgando</a>, and <a href="https://github.com/dbc-coaches" class="user-mention">@dbc-coaches</a></p>
 
                     <h3>
-                      <a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+                      <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Contributors</h3>
 
-                      <p>Having trouble get in touch at <a href="http://coaches.devbootcamp.com">http://coaches.devbootcamp.com</a> or contact <a href="mailto:coaches@devbootcamp.com">coaches@devbootcamp.com</a> and we’ll help you sort it out.</p>
-                    </section>
-                    <footer>
-                      <p>This project is maintained by <a href="https://github.com/dbc-coaches">dbc-coaches</a></p>
-                      <p><small>Hosted on GitHub Pages</small></p>
-                    </footer>
-                  </div>
-                  <script src="javascripts/scale.fix.js"></script>
+                      <p><a href="https://github.com/jonathanpeterwu" class="user-mention">@jonathanpeterwu</a>, <a href="https://github.com/amgando" class="user-mention">@amgando</a>, and <a href="https://github.com/dbc-coaches" class="user-mention">@dbc-coaches</a></p>
 
-                </body>
-                </html>
+                      <h3>
+                        <a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+                        <p>Having trouble get in touch at <a href="http://coaches.devbootcamp.com">http://coaches.devbootcamp.com</a> or contact <a href="mailto:coaches@devbootcamp.com">coaches@devbootcamp.com</a> and we’ll help you sort it out.</p>
+                      </section>
+                      <footer>
+                        <p>This project is maintained by <a href="https://github.com/dbc-coaches">dbc-coaches</a></p>
+                        <p><small>Hosted on GitHub Pages</small></p>
+                      </footer>
+                    </div>
+                    <script src="javascripts/scale.fix.js"></script>
+
+                  </body>
+                  </html>
