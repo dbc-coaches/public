@@ -24,9 +24,7 @@
           <li><a href="./pages/coaches.html">FAQ for <strong>Coaches</strong></a></li>
         </ul>
 
-
-        <h3><a name="rather-drive-stick" class="anchor quote" href="#" ><span class="octicon octicon-link"></span></a></h3>
-
+        <h3><div name="rather-drive-stick" class="anchor quote" ><span class="octicon octicon-link"></span></div></h3>
 
         <iframe class="podio-webform-frame" id="podioWebForm71695381893" height="345" style="width: 100%; border: none; height: 363px;" allowtransparency="true" frameborder="0" scrolling="no" src="https://podio.com/webforms/9873101/716953?e=true#http%3A%2F%2Fdbc-coaches.github.io%2Ftesting-gh-pages%2F"></iframe>
 
@@ -64,6 +62,7 @@
 
                 var showQuote = function(quotes){
                   var randomQuoteObject = fetch_random(quotes)
+                  debugger
 
                   var randomQuote = randomQuoteObject['fields__feedback__value']
                   var coach = randomQuoteObject['fields__coach__value']
