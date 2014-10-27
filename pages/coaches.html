@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <title>DBC Coaches by dbc-coaches</title>
+
+  <link rel="stylesheet" href="../stylesheets/styles.css">
+  <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js"></script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="../index.html">DBC Coaches</a></h1>
+        <ul>
+          <li><a href="./student.html">FAQ for  <strong>Students</strong></a></li>
+          <li><a href="./teacher.html">FAQ for  <strong>Teachers</strong></a></li>
+          <li><a href="./coaches.html">FAQ for <strong>Coaches</strong></a></li>
+        </ul>
+        <h3>
+          <a name="rather-drive-stick" class="anchor quote" href="#" ><span class="octicon octicon-link"></span></a></h3>
+
+        </header>
+        <section>
+          <h1>
+            <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to the Coaches FAQ.</h1><hr>
+
+            <h3 id="im-a-new-coach-help">I’m a new coach, help!</h3>
+
+            <p>see here: <a href="http://bit.ly/dbc-coaches-program">http://bit.ly/dbc-coaches-program</a></p>
+
+
+
+            <h3 id="how-much-do-we-make-per-hour">How much do we make per hour?</h3>
+
+            <p>$30/hr</p>
+
+
+
+            <h3 id="what-is-our-maximum-billing-per-month">What is our maximum billing per month?</h3>
+
+            <p>Each coach is limited to ~30 hours/month</p>
+
+
+
+            <h3 id="what-can-we-bill-as-expenses">What can we bill as expenses?</h3>
+
+            <p>MAX billing per month </p>
+            <p>$120/month for transportation</p>
+            <p>$120/month for food</p>
+            <p>Conditions( 2hr minimum coaching. Weeknights ending after 10pm, Weekends)</p>
+
+
+
+            <h3 id="for-breakout-talks-where-are-past-notesrepos-i-can-use">For breakout talks where are past notes/repos I can use?</h3>
+
+            <p>see here: <a href="https://github.com/dbc-coaches">https://github.com/dbc-coaches</a></p>
+
+            <h3>
+              <a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+              <p>Having trouble contact <a href="mailto:support@github.com">coaches@devbootcamp.com</a> and we’ll help you out.</p>
+            </section>
+            <footer>
+              <p>This project is maintained by <a href="https://github.com/dbc-coaches">DBC-Coaches</a></p>
+              <p><small>Hosted on GitHub Pages</small></p>
+            </footer>
+          </div>
+          <script src="../javascripts/scale.fix.js"></script>
+
+          <script type="text/javascript">
+
+            var FireBase = new Firebase("https://dbc-coaches.firebaseio.com/");
+            var quotesRef = FireBase.child("quotes");
+            quotesRef.on('value', function (snapshot) {
+              showQuote(snapshot.val())
+            }, function (errorObject) {
+              console.log('The read failed: ' + errorObject.code);
+            });
+
+            var showQuote = function(quotes){
+              var randomQuoteObject = fetch_random(quotes)
+              var randomQuote = randomQuoteObject['quote']
+              var element = document.createElement('h5')
+              element.innerHTML = randomQuote
+              document.getElementsByClassName('quote')[0].appendChild(element)
+            }
+
+            function fetch_random(quotes) {
+              var temp_key, keys = [];
+              for(temp_key in quotes) {
+                if(quotes.hasOwnProperty(temp_key)) {
+                  keys.push(temp_key);
+                }
+              }
+              return quotes[keys[Math.floor(Math.random() * keys.length)]];
+            }
+
+          </script>
+
+
+
+        </body>
+        </html>

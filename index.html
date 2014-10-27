@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <title>DBC Coaches by dbc-coaches</title>
+
+  <link rel="stylesheet" href="stylesheets/styles.css">
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="./index.html">DBC Coaches</a></h1>
+        <ul>
+          <li><a href="./pages/student.html">FAQ for  <strong>Students</strong></a></li>
+          <li><a href="./pages/teacher.html">FAQ for  <strong>Teachers</strong></a></li>
+          <li><a href="./pages/coaches.html">FAQ for <strong>Coaches</strong></a></li>
+        </ul>
+
+        <h3><div name="rather-drive-stick" class="anchor quote" ><span class="octicon octicon-link"></span></div></h3>
+
+        <iframe class="podio-webform-frame" id="podioWebForm71695381893" height="345" style="width: 100%; border: none; height: 363px;" allowtransparency="true" frameborder="0" scrolling="no" src="https://podio.com/webforms/9873101/716953?e=true#http%3A%2F%2Fdbc-coaches.github.io%2Ftesting-gh-pages%2F"></iframe>
+
+      </header>
+
+      <section>
+        <h1>
+          <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to DBC Coaches HomePage.</h1><hr>
+
+          <h3>
+            <a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Take A Look Around</h3>
+
+            <p>Check out our FAQ's if you want to read more about what we do. Feel free to enter a beacon request below. Read more about what we do as Coaches!</p>
+            <hr>
+
+            <h3>
+              <a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Meet the Coaches</h3>
+
+              <p>Get to know some of the faces and names of current coaches! <a href="./pages/team.html">Coaches Page</a></p>
+              <hr><br><br>
+
+              <div style="hide" id="wufoo-wwnhqms00iy8bo">
+                Fill out my <a href="https://devbootcamp.wufoo.com/forms/wwnhqms00iy8bo">online form</a>.
+              </div>
+
+              <script type="text/javascript">
+
+                var FireBase = new Firebase("https://dbc-coaches.firebaseio.com/");
+                var quotesRef = FireBase.child("quotes");
+                quotesRef.on('value', function (snapshot) {
+                  showQuote(snapshot.val())
+                }, function (errorObject) {
+                  console.log('The read failed: ' + errorObject.code);
+                });
+
+                var showQuote = function(quotes){
+                  var randomQuoteObject = fetch_random(quotes)
+                  debugger
+
+                  var randomQuote = randomQuoteObject['fields__feedback__value']
+                  var coach = randomQuoteObject['fields__coach__value']
+
+                  var element = document.createElement('h6')
+                  var coachElement = document.createElement('h5')
+
+                  element.innerHTML = randomQuote
+                  coachElement.innerHTML = "Students have this to say about: " + coach
+
+                  document.getElementsByClassName('quote')[0].appendChild(coachElement)
+                  document.getElementsByClassName('quote')[0].appendChild(element)
+
+                }
+
+                function fetch_random(quotes) {
+                  var temp_key, keys = [];
+                  for(temp_key in quotes) {
+                    if(quotes.hasOwnProperty(temp_key)) {
+                      keys.push(temp_key);
+                    }
+                  }
+                  return quotes[keys[Math.floor(Math.random() * keys.length)]];
+                }
+
+              </script>
+
+
+              <script type="text/javascript">var wwnhqms00iy8bo;(function(d, t) {
+                var s = d.createElement(t), options = {
+                  'userName':'devbootcamp',
+                  'formHash':'wwnhqms00iy8bo',
+                  'autoResize':true,
+                  'height':'1662',
+                  'async':true,
+                  'host':'wufoo.com',
+                  'header':'show',
+                  'ssl':true};
+                  s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+                  s.onload = s.onreadystatechange = function() {
+                    var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+                    try { wwnhqms00iy8bo = new WufooForm();wwnhqms00iy8bo.initialize(options);wwnhqms00iy8bo.display(); } catch (e) {}};
+                    var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+                  })(document, 'script');</script>
+
+                  <hr>
+
+
+                  <h3>
+                    <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Contributors</h3>
+
+                    <p><a href="https://github.com/jonathanpeterwu" class="user-mention">@jonathanpeterwu</a>, <a href="https://github.com/amgando" class="user-mention">@amgando</a>, and <a href="https://github.com/dbc-coaches" class="user-mention">@dbc-coaches</a></p>
+
+                    <h3>
+                      <a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+                      <p>Having trouble get in touch at <a href="http://coaches.devbootcamp.com">http://coaches.devbootcamp.com</a> or contact <a href="mailto:coaches@devbootcamp.com">coaches@devbootcamp.com</a> and we’ll help you sort it out.</p>
+                    </section>
+                    <footer>
+                      <p>This project is maintained by <a href="https://github.com/dbc-coaches">dbc-coaches</a></p>
+                      <p><small>Hosted on GitHub Pages</small></p>
+                    </footer>
+                  </div>
+                  <script src="javascripts/scale.fix.js"></script>
+
+                </body>
+                </html>
