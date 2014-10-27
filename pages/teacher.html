@@ -38,18 +38,24 @@
                 var showQuote = function(quotes){
                   var randomQuoteObject = fetch_random(quotes)
 
-
                   var randomQuote = randomQuoteObject['fields__feedback__value']
                   var coach = randomQuoteObject['fields__coach__value']
 
-                  var element = document.createElement('h6')
-                  var coachElement = document.createElement('h5')
+                  var coachesdiv = document.createElement('div')
+                  var quotesdiv = document.createElement('div')
+
+                  var element = document.createElement('p')
+                  var coachElement = document.createElement('p')
 
                   element.innerHTML = randomQuote
                   coachElement.innerHTML = "Students have this to say about: " + coach
 
-                  document.getElementsByClassName('quote')[0].appendChild(coachElement)
-                  document.getElementsByClassName('quote')[0].appendChild(element)
+                  coachesdiv.innerHTML = coachElement.innerHTML
+                  quotesdiv.innerHTML =  element.innerHTML
+
+
+                  document.getElementsByClassName('quote')[0].appendChild(coachesdiv)
+                  document.getElementsByClassName('quote')[0].appendChild(quotesdiv)
 
                 }
 
@@ -123,8 +129,6 @@
               <p>Having trouble contact <a href="mailto:support@github.com">coaches@devbootcamp.com</a> and we’ll help you out.</p>
             </section>
             <footer>
-              <p>This project is maintained by <a href="https://github.com/dbc-coaches">DBC-Coaches</a></p>
-              <p><small>Hosted on GitHub Pages</small></p>
             </footer>
           </div>
           <script src="../javascripts/scale.fix.js"></script>
