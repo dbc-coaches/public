@@ -1,16 +1,18 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>DBC Coaches by dbc-coaches</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <title>DBC Coaches by dbc-coaches</title>
 
-    <link rel="stylesheet" href="../stylesheets/styles.css">
-    <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="../stylesheets/styles.css">
+  <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+  <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js"></script>
+
   </head>
   <body>
     <div class="wrapper">
@@ -21,95 +23,129 @@
           <li><a href="./teacher.html">FAQ for  <strong>Teachers</strong></a></li>
           <li><a href="./coaches.html">FAQ for <strong>Coaches</strong></a></li>
         </ul>
-        <h3>
-        <a name="rather-drive-stick" class="anchor quote" href="#" ><span class="octicon octicon-link"></span></a></h3>
+        <h3><div name="rather-drive-stick" class="anchor quote" ><span class="octicon octicon-link"></span></div></h3>
 
-      </header>
-      <section>
-        <h1>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to the Student FAQ.</h1><hr>
+        <script type="text/javascript">
 
+                var FireBase = new Firebase("https://dbc-coaches.firebaseio.com/");
+                var quotesRef = FireBase.child("quotes");
+                quotesRef.on('value', function (snapshot) {
+                  showQuote(snapshot.val())
+                }, function (errorObject) {
+                  console.log('The read failed: ' + errorObject.code);
+                });
 
-<h3 id="how-do-i-ask-coaches-for-help">How do I ask coaches for help?</h3>
-
-<p>Using the help request, er, bat signal form!</p>
-
-<p>see here: <a href="http://coaches.devbootcamp.com">http://coaches.devbootcamp.com</a></p>
-
-
-
-<h3 id="ive-submitted-a-help-request-form-but-havent-heard-back">I’ve submitted a help request form but haven’t heard back!</h3>
-
-<p>Hey, we hear you, we were once students too, remember!</p>
-
-<p>As much as we love coming to DBC, we have jobs and lives outside of DBC, and coach at DBC when we have extra time and energy.  We’d love to respond to every request but have found it an unreasonable expectation. </p>
-
-<p>The help request form isn’t really a help request form, it’s a beacon for help like a bat signal that lets us know when students need help as a cohort.  When we see lots of requests coming in, we come in more often.</p>
-
-<p>And you know we still love you, of course!</p>
+                var showQuote = function(quotes){
+                  var randomQuoteObject = fetch_random(quotes)
 
 
+                  var randomQuote = randomQuoteObject['fields__feedback__value']
+                  var coach = randomQuoteObject['fields__coach__value']
 
-<h3 id="who-are-dbc-coaches">Who are DBC coaches?</h3>
+                  var element = document.createElement('h6')
+                  var coachElement = document.createElement('h5')
 
-<p>Coaches are graduates who have demonstrated exceptionally strong technical and/or cultural alignment with Dev Bootcamp. </p>
+                  element.innerHTML = randomQuote
+                  coachElement.innerHTML = "Students have this to say about: " + coach
 
+                  document.getElementsByClassName('quote')[0].appendChild(coachElement)
+                  document.getElementsByClassName('quote')[0].appendChild(element)
 
+                }
 
-<h3 id="what-do-you-do">What do you do?</h3>
+                function fetch_random(quotes) {
+                  var temp_key, keys = [];
+                  for(temp_key in quotes) {
+                    if(quotes.hasOwnProperty(temp_key)) {
+                      keys.push(temp_key);
+                    }
+                  }
+                  return quotes[keys[Math.floor(Math.random() * keys.length)]];
+                }
 
-<p>Most often when we’re at DBC we’re floating around helping individuals or small groups. We love to do breakout talks with students based on topics students want to hear about.  Ask us to organize one. We also run student hackathons every few cohorts to engage and inspire you beyond the normal DBC curriculum.</p>
+        </script>
 
+        <script src="https://podio.com/webforms/9873101/716953.js"></script>
 
+        <script type="text/javascript">
+          _podioWebForm.render("716953")
+        </script>
 
-<h3 id="do-we-get-paid-for-our-time">Do we get paid for our time?</h3>
+        <div class="podio-webform-container"></div>
 
-<p>Yes, absolutely. Never feel guilty for asking for help, that’s the only reason we’re here. </p>
-
-
-
-<h3 id="how-do-you-i-find-out-who-coaches-are">How do you I find out who coaches are?</h3>
-
-<p>Great question. You can check out current active coaches in socrates</p>
-
-<p>see here: <a href="https://socrates.devbootcamp.com/coaches">https://socrates.devbootcamp.com/coaches</a></p>
-
-
-
-<h3 id="if-i-cant-find-a-coachcant-get-help-what-should-i-do">If I can’t find a coach/can’t get help what should I do?</h3>
-
-<p>Ask the amazing people around you.  DBC is a community for learning, and the Boots in your cohort and those above and below you are your most valuable asset.  Remember that teaching is the best way to cement learning, so when you ask someone for help you’re making them better programmers as well.</p>
-
-
-
-<h3 id="do-you-have-real-jobs-and-if-so-what-are-they">Do you have real jobs? And if so what are they?</h3>
-
-<p>Yes. The majority of coaches are employed full-time as developers at various companies and positions.  Ask us about our interests and experiences! Our schedules and commutes vary widely, so you’ll notice some coaches may come in only on weeknights, others on weekends. </p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble contact <a href="mailto:support@github.com">coaches@devbootcamp.com</a> and we’ll help you out.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/dbc-coaches">DBC-Coaches</a></p>
-        <p><small>Hosted on GitHub Pages</small></p>
-      </footer>
-    </div>
-    <script src="../javascripts/scale.fix.js"></script>
-
-<script type="text/javascript">
- var quotes = ["'I just had a coaching session with Ken Yu and he helped me out a lot. Even though it was late and this is material that is new to me (which made me learn fairly slowly), he was very patient and thorough.'", "'I've had a few coaching sessions with Christine (I'm in phase 2) and she is an amazing coach. She is incredibly knowledgable about everything we have gone over and can explain things in many ways (so she can accomodate kinesthetic and visual learners in addition to auditory)'", "'I had a coaching session with Nathan and it was incredible how much I learned in a single session. I can honestly say that he can teach better than 95% of my college professors.'", "'I had a remote coaching session and it was great! The session was super helpful! He clearly explained the process I should be using for Sinatra routes and user authentication and was really good at thoroughly explaining why things work the way they do'"]
- var min = 0
- var max = quotes.length - 1
- var randomNum = Math.floor(Math.random() * (max-min +1)) + min;
- console.log(randomNum)
- var randomQuote = quotes[randomNum]
- var element = document.createElement('h5')
- element.innerHTML = randomQuote
- document.getElementsByClassName('quote')[0].appendChild(element)
-</script>
+        </header>
+        <section>
+          <h1>
+            <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to the Student FAQ.</h1><hr>
 
 
-  </body>
-</html>
+            <h3 id="how-do-i-ask-coaches-for-help">How do I ask coaches for help?</h3>
+
+            <p>Using the help request, er, bat signal form!</p>
+
+            <p>see here: <a href="http://coaches.devbootcamp.com">http://coaches.devbootcamp.com</a></p>
+
+
+
+            <h3 id="ive-submitted-a-help-request-form-but-havent-heard-back">I’ve submitted a help request form but haven’t heard back!</h3>
+
+            <p>Hey, we hear you, we were once students too, remember!</p>
+
+            <p>As much as we love coming to DBC, we have jobs and lives outside of DBC, and coach at DBC when we have extra time and energy.  We’d love to respond to every request but have found it an unreasonable expectation. </p>
+
+            <p>The help request form isn’t really a help request form, it’s a beacon for help like a bat signal that lets us know when students need help as a cohort.  When we see lots of requests coming in, we come in more often.</p>
+
+            <p>And you know we still love you, of course!</p>
+
+
+
+            <h3 id="who-are-dbc-coaches">Who are DBC coaches?</h3>
+
+            <p>Coaches are graduates who have demonstrated exceptionally strong technical and/or cultural alignment with Dev Bootcamp. </p>
+
+
+
+            <h3 id="what-do-you-do">What do you do?</h3>
+
+            <p>Most often when we’re at DBC we’re floating around helping individuals or small groups. We love to do breakout talks with students based on topics students want to hear about.  Ask us to organize one. We also run student hackathons every few cohorts to engage and inspire you beyond the normal DBC curriculum.</p>
+
+
+
+            <h3 id="do-we-get-paid-for-our-time">Do we get paid for our time?</h3>
+
+            <p>Yes, absolutely. Never feel guilty for asking for help, that’s the only reason we’re here. </p>
+
+
+
+            <h3 id="how-do-you-i-find-out-who-coaches-are">How do you I find out who coaches are?</h3>
+
+            <p>Great question. You can check out current active coaches in socrates</p>
+
+            <p>see here: <a href="https://socrates.devbootcamp.com/coaches">https://socrates.devbootcamp.com/coaches</a></p>
+
+
+
+            <h3 id="if-i-cant-find-a-coachcant-get-help-what-should-i-do">If I can’t find a coach/can’t get help what should I do?</h3>
+
+            <p>Ask the amazing people around you.  DBC is a community for learning, and the Boots in your cohort and those above and below you are your most valuable asset.  Remember that teaching is the best way to cement learning, so when you ask someone for help you’re making them better programmers as well.</p>
+
+
+
+            <h3 id="do-you-have-real-jobs-and-if-so-what-are-they">Do you have real jobs? And if so what are they?</h3>
+
+            <p>Yes. The majority of coaches are employed full-time as developers at various companies and positions.  Ask us about our interests and experiences! Our schedules and commutes vary widely, so you’ll notice some coaches may come in only on weeknights, others on weekends. </p>
+
+            <h3>
+              <a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+              <p>Having trouble contact <a href="mailto:support@github.com">coaches@devbootcamp.com</a> and we’ll help you out.</p>
+            </section>
+            <footer>
+              <p>This project is maintained by <a href="https://github.com/dbc-coaches">DBC-Coaches</a></p>
+              <p><small>Hosted on GitHub Pages</small></p>
+            </footer>
+          </div>
+          <script src="../javascripts/scale.fix.js"></script>
+
+        </body>
+        </html>

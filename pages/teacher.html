@@ -1,16 +1,18 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>DBC Coaches by dbc-coaches</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <title>DBC Coaches by dbc-coaches</title>
 
-    <link rel="stylesheet" href="../stylesheets/styles.css">
-    <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="../stylesheets/styles.css">
+  <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js"></script>
+
   </head>
   <body>
     <div class="wrapper">
@@ -21,76 +23,112 @@
           <li><a href="./teacher.html">FAQ for  <strong>Teachers</strong></a></li>
           <li><a href="./coaches.html">FAQ for <strong>Coaches</strong></a></li>
         </ul>
-        <h3>
-        <a name="rather-drive-stick" class="anchor quote" href="#" ><span class="octicon octicon-link"></span></a></h3>
+        <h3><div name="rather-drive-stick" class="anchor quote" ><span class="octicon octicon-link"></span></div></h3>
 
-      </header>
-      <section>
-        <h1>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to the Teachers FAQ.</h1><hr>
+        <script type="text/javascript">
 
-<h3 id="how-can-we-make-requests-as-teachers">How can we make requests as teachers?</h3>
+                var FireBase = new Firebase("https://dbc-coaches.firebaseio.com/");
+                var quotesRef = FireBase.child("quotes");
+                quotesRef.on('value', function (snapshot) {
+                  showQuote(snapshot.val())
+                }, function (errorObject) {
+                  console.log('The read failed: ' + errorObject.code);
+                });
 
-<p>Through the beacon request form: <a href="http://coaches.devbootcamp.com">http://coaches.devbootcamp.com</a></p>
-
-
-
-<h3 id="what-type-of-requests-can-we-make-as-dbc-teachersstaff">What type of requests can we make as DBC teachers/staff?</h3>
-
-<ul>
-<li>We’re open to suggestions and most requests!</li>
-<li>We have a special projects budget to help build things for DBC</li>
-<li>We’re more than happy to come in to help during busy hours</li>
-<li>We’re happy to do mock assessments, etc!</li>
-<li>If we don’t like your request we’ll tell you, nicely. Please ask.</li>
-</ul>
+                var showQuote = function(quotes){
+                  var randomQuoteObject = fetch_random(quotes)
 
 
+                  var randomQuote = randomQuoteObject['fields__feedback__value']
+                  var coach = randomQuoteObject['fields__coach__value']
 
-<h3 id="how-do-we-start-a-conversation-about-ideas-with-coaches">How do we start a conversation about ideas with coaches?</h3>
+                  var element = document.createElement('h6')
+                  var coachElement = document.createElement('h5')
 
-<p>Feel free to fill out the beacon request form. And make sure to leave your email so we can reply back to you! </p>
+                  element.innerHTML = randomQuote
+                  coachElement.innerHTML = "Students have this to say about: " + coach
 
-<p>We’re open to feedback, suggestions, and criticism.</p>
+                  document.getElementsByClassName('quote')[0].appendChild(coachElement)
+                  document.getElementsByClassName('quote')[0].appendChild(element)
+
+                }
+
+                function fetch_random(quotes) {
+                  var temp_key, keys = [];
+                  for(temp_key in quotes) {
+                    if(quotes.hasOwnProperty(temp_key)) {
+                      keys.push(temp_key);
+                    }
+                  }
+                  return quotes[keys[Math.floor(Math.random() * keys.length)]];
+                }
+
+        </script>
+
+        <script src="https://podio.com/webforms/9873101/716953.js"></script>
+
+        <script type="text/javascript">
+          _podioWebForm.render("716953")
+        </script>
+
+        <div class="podio-webform-container"></div>
+        </header>
+        <section>
+          <h1>
+            <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to the Teachers FAQ.</h1><hr>
+
+            <h3 id="how-can-we-make-requests-as-teachers">How can we make requests as teachers?</h3>
+
+            <p>Through the beacon request form: <a href="http://coaches.devbootcamp.com">http://coaches.devbootcamp.com</a></p>
 
 
 
-<h3 id="are-we-interested-in-giving-feedback-to-current-curriculum">Are we interested in giving feedback to current curriculum?</h3>
+            <h3 id="what-type-of-requests-can-we-make-as-dbc-teachersstaff">What type of requests can we make as DBC teachers/staff?</h3>
 
-<p>Yes.  We can help develop and review curriculum as you write it.</p>
+            <ul>
+              <li>We’re open to suggestions and most requests!</li>
+              <li>We have a special projects budget to help build things for DBC</li>
+              <li>We’re more than happy to come in to help during busy hours</li>
+              <li>We’re happy to do mock assessments, etc!</li>
+              <li>If we don’t like your request we’ll tell you, nicely. Please ask.</li>
+            </ul>
 
-<p>We can also give feedback on patterns we observe in student progress.  Please remember that our sessions with students are confidential, and we will not talk to you about individual students without explicit consent. </p>
+
+
+            <h3 id="how-do-we-start-a-conversation-about-ideas-with-coaches">How do we start a conversation about ideas with coaches?</h3>
+
+            <p>Feel free to fill out the beacon request form. And make sure to leave your email so we can reply back to you! </p>
+
+            <p>We’re open to feedback, suggestions, and criticism.</p>
 
 
 
-<h3 id="i-have-feedback-to-give-the-coaches">I have feedback to give the coaches.</h3>
+            <h3 id="are-we-interested-in-giving-feedback-to-current-curriculum">Are we interested in giving feedback to current curriculum?</h3>
 
-<p>That is not a question but it is super awesome.  Feel free to shoot us an email saying how much you love us! Or even how you wish we would come in more often, or stop saying how great three.js is.</p>
+            <p>Yes.  We can help develop and review curriculum as you write it.</p>
 
-<p>Drop us a line at coaches.sf@devbootcamp.com</p>
+            <p>We can also give feedback on patterns we observe in student progress.  Please remember that our sessions with students are confidential, and we will not talk to you about individual students without explicit consent. </p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
 
-<p>Having trouble contact <a href="mailto:support@github.com">coaches@devbootcamp.com</a> and we’ll help you out.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/dbc-coaches">DBC-Coaches</a></p>
-        <p><small>Hosted on GitHub Pages</small></p>
-      </footer>
-    </div>
-    <script src="../javascripts/scale.fix.js"></script>
-<script type="text/javascript">
- var quotes = ["'I just had a coaching session with Ken Yu and he helped me out a lot. Even though it was late and this is material that is new to me (which made me learn fairly slowly), he was very patient and thorough.'", "'I've had a few coaching sessions with Christine (I'm in phase 2) and she is an amazing coach. She is incredibly knowledgable about everything we have gone over and can explain things in many ways (so she can accomodate kinesthetic and visual learners in addition to auditory)'", "'I had a coaching session with Nathan and it was incredible how much I learned in a single session. I can honestly say that he can teach better than 95% of my college professors.'", "'I had a remote coaching session and it was great! The session was super helpful! He clearly explained the process I should be using for Sinatra routes and user authentication and was really good at thoroughly explaining why things work the way they do'"]
- var min = 0
- var max = quotes.length - 1
- var randomNum = Math.floor(Math.random() * (max-min +1)) + min;
- console.log(randomNum)
- var randomQuote = quotes[randomNum]
- var element = document.createElement('h5')
- element.innerHTML = randomQuote
- document.getElementsByClassName('quote')[0].appendChild(element)
-</script>
 
-  </body>
-</html>
+            <h3 id="i-have-feedback-to-give-the-coaches">I have feedback to give the coaches.</h3>
+
+            <p>That is not a question but it is super awesome.  Feel free to shoot us an email saying how much you love us! Or even how you wish we would come in more often, or stop saying how great three.js is.</p>
+
+            <p>Drop us a line at coaches.sf@devbootcamp.com</p>
+
+            <h3>
+              <a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+              <p>Having trouble contact <a href="mailto:support@github.com">coaches@devbootcamp.com</a> and we’ll help you out.</p>
+            </section>
+            <footer>
+              <p>This project is maintained by <a href="https://github.com/dbc-coaches">DBC-Coaches</a></p>
+              <p><small>Hosted on GitHub Pages</small></p>
+            </footer>
+          </div>
+          <script src="../javascripts/scale.fix.js"></script>
+
+
+        </body>
+        </html>
