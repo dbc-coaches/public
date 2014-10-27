@@ -64,10 +64,19 @@
 
                 var showQuote = function(quotes){
                   var randomQuoteObject = fetch_random(quotes)
-                  var randomQuote = randomQuoteObject['quote']
-                  var element = document.createElement('h5')
+
+                  var randomQuote = randomQuoteObject['fields__feedback__value']
+                  var coach = randomQuoteObject['fields__coach__value']
+
+                  var element = document.createElement('h6')
+                  var coachElement = document.createElement('h5')
+
                   element.innerHTML = randomQuote
+                  coachElement.innerHTML = "Students have this to say about: " + coach
+
+                  document.getElementsByClassName('quote')[0].appendChild(coachElement)
                   document.getElementsByClassName('quote')[0].appendChild(element)
+
                 }
 
                 function fetch_random(quotes) {
