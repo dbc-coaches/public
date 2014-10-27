@@ -26,31 +26,7 @@
 
         <h3><div name="rather-drive-stick" class="anchor quote" ><span class="octicon octicon-link"></span></div></h3>
 
-        <iframe class="podio-webform-frame" id="podioWebForm71695381893" height="345" style="width: 100%; border: none; height: 363px;" allowtransparency="true" frameborder="0" scrolling="no" src="https://podio.com/webforms/9873101/716953?e=true#http%3A%2F%2Fdbc-coaches.github.io%2Ftesting-gh-pages%2F"></iframe>
-
-      </header>
-
-      <section>
-        <h1>
-          <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to DBC Coaches HomePage.</h1><hr>
-
-          <h3>
-            <a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Take A Look Around</h3>
-
-            <p>Check out our FAQ's if you want to read more about what we do. Feel free to enter a beacon request below. Read more about what we do as Coaches!</p>
-            <hr>
-
-            <h3>
-              <a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Meet the Coaches</h3>
-
-              <p>Get to know some of the faces and names of current coaches! <a href="./pages/team.html">Coaches Page</a></p>
-              <hr><br><br>
-
-              <div style="hide" id="wufoo-wwnhqms00iy8bo">
-                Fill out my <a href="https://devbootcamp.wufoo.com/forms/wwnhqms00iy8bo">online form</a>.
-              </div>
-
-              <script type="text/javascript">
+        <script type="text/javascript">
 
                 var FireBase = new Firebase("https://dbc-coaches.firebaseio.com/");
                 var quotesRef = FireBase.child("quotes");
@@ -62,7 +38,7 @@
 
                 var showQuote = function(quotes){
                   var randomQuoteObject = fetch_random(quotes)
-                  debugger
+
 
                   var randomQuote = randomQuoteObject['fields__feedback__value']
                   var coach = randomQuoteObject['fields__coach__value']
@@ -88,8 +64,36 @@
                   return quotes[keys[Math.floor(Math.random() * keys.length)]];
                 }
 
-              </script>
+        </script>
 
+        <script src="https://podio.com/webforms/9873101/716953.js"></script>
+
+        <script type="text/javascript">
+          _podioWebForm.render("716953")
+        </script>
+
+        <div class="podio-webform-container"></div>
+      </header>
+
+      <section>
+        <h1>
+          <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to DBC Coaches HomePage.</h1><hr>
+
+          <h3>
+            <a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Take A Look Around</h3>
+
+            <p>Check out our FAQ's if you want to read more about what we do. Feel free to enter a beacon request below. Read more about what we do as Coaches!</p>
+            <hr>
+
+            <h3>
+              <a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Meet the Coaches</h3>
+
+              <p>Get to know some of the faces and names of current coaches! <a href="./pages/team.html">Coaches Page</a></p>
+              <hr><br><br>
+
+              <div style="hide" id="wufoo-wwnhqms00iy8bo">
+                Fill out my <a href="https://devbootcamp.wufoo.com/forms/wwnhqms00iy8bo">online form</a>.
+              </div>
 
               <script type="text/javascript">var wwnhqms00iy8bo;(function(d, t) {
                 var s = d.createElement(t), options = {
