@@ -12,6 +12,7 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/1.1.2/firebase.js"></script>
   </head>
   <body>
@@ -73,6 +74,28 @@
         </script>
 
      <div><hr><p><a href="https://podio.com/webforms/9873101/716953" target="_blank">Submit your feedback here</a></p></div>
+
+        <script>
+          $(document).ready(function() {
+            var database = new Firebase('https://dbc-coaches.firebaseio.com/')
+              , checkIns = database.child('checkin')
+
+            checkIns.on('value', checkIn)
+
+            function checkIn(response) {
+              var coaches = response.val()
+              for (coach in coaches) {
+                $('.check-ins').append(linkTo(coaches[coach].email))
+              }
+            }
+
+            function linkTo(email) {
+              return '<a href="mailto:' + email + '">' + email + '</a><br>'
+            }
+          })
+        </script>
+        <h3>Coaches at DBC today</h3>
+        <div class="check-ins"></div>
       </header>
 
       <section>
