@@ -26,60 +26,23 @@
           <li><a href="./pages/coaches.html">FAQ for <strong>Coaches</strong></a></li>
         </ul>
 
+
         <!--  Coaches check-in information  -->
         <h3>Coaches at DBC today</h3>
         <div class="check-ins"></div>
         <!--  End coaches check-in information  -->
 
+        <!--  Podio Feedback Form  -->
+        <div><hr><h3><a href="https://podio.com/webforms/9873101/716953" target="_blank">Submit your feedback here</a></h3></div>
+        <!--  End Podio Feedback Form  -->
+
+
+        <!-- Student Feedback Generator  -->
+        <hr>
+        <h3> Student Feedback </h3>
         <div name="rather-drive-stick" class="anchor quote" ><span class="octicon octicon-link"></span></div>
+        <!-- End Student Feedback Generator  -->
 
-        <script type="text/javascript">
-
-                var FireBase = new Firebase("https://dbc-coaches.firebaseio.com/");
-                var quotesRef = FireBase.child("quotes");
-                quotesRef.on('value', function (snapshot) {
-                  showQuote(snapshot.val())
-                }, function (errorObject) {
-                  console.log('The read failed: ' + errorObject.code);
-                });
-
-                var showQuote = function(quotes){
-                  var randomQuoteObject = fetch_random(quotes)
-
-                  var randomQuote = randomQuoteObject['feedback']
-                  var coach = randomQuoteObject['coach']
-
-                  var coachesdiv = document.createElement('div')
-                  var quotesdiv = document.createElement('div')
-
-                  var element = document.createElement('p')
-                  var coachElement = document.createElement('p')
-
-                  element.innerHTML = randomQuote
-                  coachElement.innerHTML = "<p>Students have this to say about: <br><b>" + coach + "</b></p><hr>"
-
-                  coachesdiv.innerHTML = coachElement.innerHTML
-                  quotesdiv.innerHTML =  element.innerHTML
-
-
-                  document.getElementsByClassName('quote')[0].appendChild(coachesdiv)
-                  document.getElementsByClassName('quote')[0].appendChild(quotesdiv)
-
-                }
-
-                function fetch_random(quotes) {
-                  var temp_key, keys = [];
-                  for(temp_key in quotes) {
-                    if(quotes.hasOwnProperty(temp_key)) {
-                      keys.push(temp_key);
-                    }
-                  }
-                  return quotes[keys[Math.floor(Math.random() * keys.length)]];
-                }
-
-        </script>
-
-     <div><hr><p><a href="https://podio.com/webforms/9873101/716953" target="_blank">Submit your feedback here</a></p></div>
       </header>
 
       <section>
@@ -136,7 +99,9 @@
                     </footer>
                   </div>
                   <script src="javascripts/scale.fix.js"></script>
-                   <script src="javascripts/md5.js"></script>
+                  <script src="javascripts/md5.js"></script>
                   <script src="javascripts/check-in.js"></script>
+                  <script src="javascripts/coaches-feedback.js"></script>
+
                 </body>
                 </html>
