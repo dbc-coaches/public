@@ -38,8 +38,8 @@
                 var showQuote = function(quotes){
                   var randomQuoteObject = fetch_random(quotes)
 
-                  var randomQuote = randomQuoteObject['fields__feedback__value']
-                  var coach = randomQuoteObject['fields__coach__value']
+                  var randomQuote = randomQuoteObject['feedback']
+                  var coach = randomQuoteObject['coach']
 
                   var coachesdiv = document.createElement('div')
                   var quotesdiv = document.createElement('div')
