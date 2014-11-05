@@ -1,15 +1,26 @@
 $(document).ready(function() {
-  $('.nav-link').on('click', function(e) {
-    // This grabs the id of the section to show
-    var id = $(e.target).closest('a').data('id');
+  var Router = {
+    initialize: function() {
+      this._navigate();
+      $(window).on('hashchange', this._navigate);
+    },
 
-    // Hide the section that is currently showing
-    $('.main-content').removeClass('active');
+    _navigate: function() {
+      var hash = window.location.hash;
 
-    // Show section that the user is trying to navigate to
-    $(id).addClass('active');
+      // Don't do anything if no hash in url
+      if (!hash) { return; }
 
-    // Make sure page is scrolled to the top
-    setTimeout(function() { $(window).scrollTop(0); }, 0)
-  });
+      // Hide the section that is currently showing
+      $('.main-content').removeClass('active');
+
+      var $section = $(hash);
+
+      // Show section that has the hash as it's id or redirect to root if section
+      // doesn't exist
+      $section.length ? $section.addClass('active') : window.location = '/';
+    }
+  }
+
+  Router.initialize();
 });
