@@ -1,0 +1,34 @@
+.roster ul {
+  list-style: none;
+  padding: 0;
+}
+
+.roster li {
+  display: none;
+  clear:both;
+  width: 300px;
+  margin-bottom: 40px;
+}
+
+.roster li img {
+  float: left;
+  display: inline;
+}
+
+.roster li .caption {
+  padding-top: 15px;
+  padding-left: 120px;
+}
+
+.roster li .caption .name {
+  font-weight: bold;
+  display: block;
+}
+
+.roster li .caption .cohort {
+  display: block;
+}
+
+.roster li .caption .email a {
+  margin-top: 20px;
+}
