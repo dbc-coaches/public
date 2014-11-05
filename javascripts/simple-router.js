@@ -1,15 +1,16 @@
 $(document).ready(function() {
   var Router = {
     initialize: function() {
-      this._navigate();
+      if (window.location.hash) { this._navigate(); }
+
       $(window).on('hashchange', this._navigate);
     },
 
     _navigate: function() {
       var hash = window.location.hash;
 
-      // Don't do anything if no hash in url
-      if (!hash) { return; }
+      // Make back button to index page work
+      if (!hash) { hash = '#index' }
 
       // Hide the section that is currently showing
       $('.main-content').removeClass('active');
