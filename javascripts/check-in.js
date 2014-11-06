@@ -8,7 +8,7 @@ $(document).ready(function() {
     var coaches = response.val()
     for (coach in coaches) {
       var email = formatEmail(coaches[coach].email)
-      $('.check-ins').append(template(email))
+      if (checkInUnique(email)) $('.check-ins').append(template(email))
     }
   }
 
@@ -21,5 +21,9 @@ $(document).ready(function() {
 
   function formatEmail(email) {
     return $.trim(String(email).toLowerCase())
+  }
+
+  function checkInUnique(email) {
+    return $('.check-ins a[data-email="' + email + '"]').length === 0
   }
 })
