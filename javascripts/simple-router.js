@@ -12,6 +12,9 @@ $(document).ready(function() {
       // Make back button to index page work
       if (!hash) { hash = '#index' }
 
+      // Make sure page is scrolled to the top
+      $(window).scrollTop(0);
+
       // Hide the section that is currently showing
       $('.main-content').removeClass('active');
 
